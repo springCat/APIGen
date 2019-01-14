@@ -1,7 +1,7 @@
 # APIGen
 ### generate api request and response from md
 
-####mdtableparse -h
+#### mdtableparse -h
 >Usage of mdtableparse:
 >  -d string
 >    	the path of data to generator the > java (default "~")
@@ -16,7 +16,7 @@
 #### for example
 > mdtableparse -d ~/Desktop/template.md -o ~/Desktop -p org.springcat -i WWW
 
-####result:
+#### result:
 > packagePath: org.springcat
 > interaceName: WWW
 > dataPath: /Users/springcat/Desktop/template.md
