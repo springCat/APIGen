@@ -1,5 +1,5 @@
 # APIGen
-### generate api request and response from md
+### generate Java request and response from api write by markdown
 
 #### mdtableparse -h
 ```shell
