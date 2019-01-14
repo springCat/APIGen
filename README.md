@@ -19,12 +19,13 @@ Usage of mdtableparse:
 > mdtableparse -d ~/Desktop/template.md -o ~/Desktop -p org.springcat -i WWW
 
 #### result:
-> packagePath: org.springcat
-> interaceName: WWW
-> dataPath: /Users/springcat/Desktop/template.md
-> /Users/springcat/Desktop/WWWRequest.java gen success
-> /Users/springcat/Desktop/WWWResponse.java gen success
-
+```shell
+ packagePath: org.springcat
+ interaceName: WWW
+ dataPath: /Users/springcat/Desktop/template.md
+ /Users/springcat/Desktop/WWWRequest.java gen success
+ /Users/springcat/Desktop/WWWResponse.java gen success
+```
 #### cat WWWRequest.java
 ```Java
 package org.springcat;
