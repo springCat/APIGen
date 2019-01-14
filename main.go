@@ -10,13 +10,6 @@ import (
 	"text/template"
 )
 
-var data string = `|status |Y |Integer | |返回结果状态。0：正常；1：错误。 |
-|company |Y |Company | | 所属公司 |
-|department |Y |Department |company | 所属部门 |
-|name |Y |String |department | 名称 |
-|category |Y |Integer | |所属类型 |`
-
-
 type Line struct{
 	Name   string
 	Option string
@@ -91,6 +84,7 @@ func main()  {
 	resLines := make([]string,0);
 	errCodeLines := make([]string,0);
 
+	//hanlde line
 	for {
 		data, _, err := b.ReadLine()
 		if err != nil {
@@ -168,10 +162,9 @@ func genClass(lines []string, errCodeLines []string, className string, packagePa
 		buffer[line] = 1;
 	}
 
-	classTemplateExec := template.Must(template.New("classTemplate").Parse(classTemplate))
-
-	handleLines := make([]Line,0);
 	//gen root class
+	classTemplateExec := template.Must(template.New("classTemplate").Parse(classTemplate))
+	handleLines := make([]Line,0);
 	for k := range buffer {
 		if k.Parent == "" {
 			delete(buffer,k)
@@ -185,14 +178,14 @@ func genClass(lines []string, errCodeLines []string, className string, packagePa
 		ClassName:className,
 		PackagePath:packagePath,
 	}
-
+	//for error in response
 	if errCodeLines != nil {
 		classData.ErrCodeLines = errCodeLines;
 	}
 
 	classTemplateExec.Execute(wr,classData)
 
-
+	//gen sub class
 	subTemplate := template.Must(template.New("subTemplate").Parse(subTemplate))
 	for len(buffer) > 0  {
 
@@ -200,13 +193,10 @@ func genClass(lines []string, errCodeLines []string, className string, packagePa
 
 	}
 
-
-
 	io.WriteString(wr,"}")
 }
 
 func genSubClass(subTemplate *template.Template, buffer map[Line]int,genBuffer map[string]Line,wr io.Writer) ( map[string]Line ) {
-
 	resultGenBuffer := map[string]Line{}
 	for genk, genv := range genBuffer {
 		handleLines := make([]Line,0);
@@ -223,7 +213,6 @@ func genSubClass(subTemplate *template.Template, buffer map[Line]int,genBuffer m
 				Lines:       handleLines,
 				ClassName:   genv.Typ,
 			}
-
 			subTemplate.Execute(wr, classData)
 		}
 	}
