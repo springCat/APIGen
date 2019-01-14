@@ -70,8 +70,8 @@ func main()  {
 
 	packagePath := flag.String("p", "", "the package of the java")
 	className := flag.String("i", "", "the name of the interface")
-	dataPath := flag.String("d", "~", "the path of data to generator the java")
-	outPath := flag.String("o", "~", "the path of data to output")
+	dataPath := flag.String("d", "/Users/springcat/api.md", "the path of data to generator the java")
+	outPath := flag.String("o", "/Users/springcat", "the path of data to output")
 
 	flag.Parse()
 
@@ -166,7 +166,7 @@ func genClass(lines []string, errCodeLines []string, className string, packagePa
 	classTemplateExec := template.Must(template.New("classTemplate").Parse(classTemplate))
 	handleLines := make([]Line,0);
 	for k := range buffer {
-		if k.Parent == "" {
+		if k.Parent == "" || k.Parent == "request" || k.Parent == "response" {
 			delete(buffer,k)
 			genBuffer[k.Name] = k
 			handleLines = append(handleLines, k)
