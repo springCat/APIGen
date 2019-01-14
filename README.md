@@ -2,16 +2,16 @@
 ### generate api request and response from md
 
 #### mdtableparse -h
->Usage of mdtableparse:
->  -d string
->    	the path of data to generator the > java (default "~")
->  -i string
->    	the name of the interface
->  -o string
->    	the path of data to output 
-> (default "~")
->  -p string
->    	the package of the java
+> Usage of mdtableparse:
+  -d string
+    	the path of data to generator the > java (default "~")
+  -i string
+    	the name of the interface
+  -o string
+    	the path of data to output 
+ (default "~")
+  -p string
+    	the package of the java
 
 #### for example
 > mdtableparse -d ~/Desktop/template.md -o ~/Desktop -p org.springcat -i WWW
