@@ -74,7 +74,7 @@ var subTemplate = `    @Data
 `
 
 func main()  {
-	flag.Usage()
+
 	packagePath := flag.String("p", "", "the package of the java")
 	className := flag.String("i", "", "the name of the interface")
 	dataPath := flag.String("d", "~", "the path of data to generator the java")
